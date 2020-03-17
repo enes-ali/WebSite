@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/detail.css' %}">{% endblock %}
+
+{% block body %}
+    <div class="container" style="border-bottom-style: solid; font-size: 21px; margin-bottom: 40px;">
+    <span class="col">
+        {% if post.image_upload %}
+                <img src="{{ post.image_upload.url }}" alt="asd" class="row" style="width: 300px; margin-top: 50px; margin-left: 100px;">
+            {% endif %}
+            <h1 class="row">{{post.title}}</h1>
+            <p class="row">{{post.text|safe}}</p>
+            <span class="row"> <pre class="code">{{ post.code }}</pre> </span>
+            <span>{{post.publish_date}}</span>
+    </span>
+
+    </div>
+{% endblock %}

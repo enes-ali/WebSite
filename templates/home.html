@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {%  for post in posts %}
+        <div class="container">
+        <div class="col" style="width: 800px; border-bottom-style: solid; font-size: 21px; margin-bottom: 50px;">
+            <a href="{% url 'post_detail' pk=post.pk %}" class="row" ><h1 style="margin-top: 30px;">{{post.title}}</h1></a>
+            {% if post.image_upload %}
+             <img src="{{ post.image_upload.url }}" alt="asd" class="row" style="width: 300px; ">
+             {% endif %}
+             <p class="row">{{post.home_text}}</p>
+             <span class="row">{{post.publish_date}}</span>
+        </div>
+
+        </div>
+    {%endfor%}
+
+
+<span  style="margin-left: 140px;">
+    <span >
+        {% if posts.has_next %}
+            <a href="?sayfa={{ posts.next_page_number }}" style="margin-right: 20px;">Sonraki >></a>
+            <a href="?sayfa={{ posts.paginator.num_pages }}">En Son &raquo;</a><br>
+        {% endif %}
+
+            {% if posts.has_previous %}
+                <a href="?sayfa={{ posts.previous_page_number }}" style="margin-right: 20px;"> << Onceki</a>
+                <a href="?sayfa=1">&laquo; Ilk Sayfa</a> <br>
+            {% endif %}
+
+            <span class="current">
+            <span style="font-family: Lobster; margin-right: 20px; margin-left: 300px;"> Sayfa: {{ posts.number }} </span>
+            <span style="font-family: Lobster"> Sayfa Sayisi {{ posts.paginator.num_pages }}.</span>
+            </span>
+
+    </span>
+</span>
+
+
+
+{% endblock %}
+
+
