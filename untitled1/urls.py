@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.post_view, name='home'),
     path('post/<int:pk>/', views.detail_view, name='post_detail'),
+    path('kutuphaneler/<str:pk>/', views.libshow, name='libwv'),
 ]
 
 

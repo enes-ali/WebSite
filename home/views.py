@@ -10,7 +10,7 @@ def post_view(rq):
     ara = rq.GET.get('Ara')
     if ara:
         new_post = new_post.filter(title__icontains=ara)
-    paginator = Paginator(new_post, 4) # Show 25 contacts per page.
+    paginator = Paginator(new_post, 25) # Show 25 contacts per page.
     page_number = rq.GET.get('sayfa')
     page_obj = paginator.get_page(page_number)
     return render(rq, 'home.html', {'posts': page_obj})
@@ -20,3 +20,7 @@ def detail_view(rq, pk):
     dpost = post.objects.get(pk=pk)
     return render(rq, 'detail.html', {'post': dpost})
 
+
+def libshow(rq, pk):
+    psts = post.objects.filter(choice=pk)
+    return render(rq, 'home.html', {'posts': psts})

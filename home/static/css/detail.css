@@ -10,13 +10,6 @@ h1{
     font-family: 'Lobster';
 }
 
-.code {
-    margin-left: 50px;
-    background-color: #c0c0c0;
-    width: 1000px;
-    height: auto;
-    zoom: 70%;
-}
 .navbar-toggler{
     background-repeat: no-repeat;
     background-image: url("menu.svg");
